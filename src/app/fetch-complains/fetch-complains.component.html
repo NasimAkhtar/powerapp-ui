@@ -1,0 +1,53 @@
+<div class="col-xs-12 col-md-12">
+  <div>
+    <table class="table table-striped table-sm">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">Edit</th>
+        <th scope="col">Complain No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Address</th>
+        <th scope="col">Problem Description</th>
+        <th scope="col">Warranty Statement</th>
+        <th scope="col">Complain Registration Date & Time</th>
+        <th scope="col">OnSite Arrival Date & Time</th>
+        <th scope="col">Required Parts</th>
+        <th scope="col">Supplied Parts</th>
+        <th scope="col">Returned Parts</th>
+        <th scope="col">Resolution Date & Time</th>
+        <th scope="col">Engineer</th>
+        <th scope="col">Remarks</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let complain of complains; let i = index"
+      [ngClass]="{'table-success': (complain.resolutionDateTime !== null && (complain.resolutionDateTime !== ''))}">
+        <td>
+          <img
+            [src]="'assets/icons8-edit-24.png'"
+            alt="'Edit'"
+            class="img-responsive"
+            style="cursor: pointer"
+            (click)="onEditItem(i)"
+            >
+        </td>
+        <td>{{ complain.id }}</td>
+        <td>{{ complain.name }}</td>
+        <td>{{ complain.mobile }}</td>
+        <td>{{ complain.address }}</td>
+        <td>{{ complain.problemDescription }}</td>
+        <td>{{ complain.warrantyStatement }}</td>
+        <td>{{ complain.registrationDateTime }}</td>
+        <td>{{ complain.onSiteArrivalDateTime }}</td>
+        <td>{{ complain.requiredParts }}</td>
+        <td>{{ complain.suppliedParts }}</td>
+        <td>{{ complain.returnedParts }}</td>
+        <td>{{ complain.resolutionDateTime }}</td>
+        <td>{{ complain.engineer }}</td>
+        <td>{{ complain.remarks }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

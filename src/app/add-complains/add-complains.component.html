@@ -1,0 +1,196 @@
+<div class="col-xs-12 col-md-12">
+  <form #complainForm="ngForm"
+        (ngSubmit)="onAddComplain(complainForm.value)"
+  >
+    <div class="form-group" [ngStyle]="!editMode && {'display': 'none'}">
+      <label for="id">Complain No.</label>
+      <input
+        type="text"
+        readonly
+        class="form-control"
+        id="id"
+        ngModel
+        name="id"
+      /></div>
+    <div class="form-group">
+      <label for="name" class="asterisk-if-mandatory">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        ngModel
+        name="name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="mobile" class="asterisk-if-mandatory">Mobile</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">+91</div>
+        </div>
+        <input
+          type="tel"
+          class="form-control"
+          id="mobile"
+          required
+          ngModel
+          name="mobile"
+          minlength="10"
+          maxlength="10"
+          pattern="^[6-9]\d{9}$"
+          prefix="+91"
+        />
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address" class="asterisk-if-mandatory">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address"
+        required
+        ngModel
+        name="address"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="problemDescription" class="asterisk-if-mandatory">Problem Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="problemDescription"
+        required
+        ngModel
+        name="problemDescription"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="warrantyStatement" class="asterisk-if-mandatory">Warranty Statement</label>
+      <select
+        id="warrantyStatement"
+        class="form-control"
+        required
+        ngModel
+        name="warrantyStatement"
+      >
+        <option>In Warranty</option>
+        <option>Out of Warranty</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="registrationDateTime" class="asterisk-if-mandatory">Complain Registration Date & Time</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="registrationDateTime"
+        required
+        ngModel
+        name="registrationDateTime"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="onSiteArrivalDateTime">OnSite Arrival Date & Time:</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="onSiteArrivalDateTime"
+        ngModel
+        name="onSiteArrivalDateTime"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Service Description:</label>
+      <div>
+        <label>Required</label>
+        <input
+          type="text"
+          class="form-control"
+          id="requiredParts"
+          ngModel
+          name="requiredParts"
+        />
+      </div>
+      <div>
+        <label>Supplied</label>
+        <input
+          type="text"
+          class="form-control"
+          id="suppliedParts"
+          ngModel
+          name="suppliedParts"
+        />
+      </div>
+      <div>
+        <label>Returned</label>
+        <input
+          type="text"
+          class="form-control"
+          id="returnedParts"
+          ngModel
+          name="returnedParts"
+        />
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="resolutionDateTime">Resolution Date & Time:</label>
+      <input
+        type="datetime-local"
+        class="form-control"
+        id="resolutionDateTime"
+        ngModel
+        name="resolutionDateTime"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="engineer" >Engineer:</label>
+      <select
+        id="engineer"
+        class="form-control"
+        ngModel
+        name="engineer"
+      >
+        <option>Engineer - 1</option>
+        <option>Engineer - 2</option>
+        <option>Engineer - 3</option>
+        <option>Engineer - 4</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="remarks">Remarks:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="remarks"
+        ngModel
+        name="remarks"
+      />
+    </div>
+
+    <button
+      class="btn btn-primary mr-1"
+      type="submit"
+      [disabled]="!complainForm.valid"
+    >
+      {{editMode ? 'Update': 'Add'}}
+    </button>
+
+    <button
+      class="btn btn-primary"
+      type="button"
+      *ngIf="editMode"
+      (click)="onCancel()"
+    >
+      {{'Cancel'}}
+    </button>
+  </form>
+</div>
